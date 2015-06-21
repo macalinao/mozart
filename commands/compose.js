@@ -23,7 +23,8 @@ async function findEnv(machine) {
 
 async function spawnCompose(randy, repo, branch, env) {
   let logPath = '/mozart/' + id + '.log';
-  db[id].status = false;
+  db[id+'x'] = {};
+  db[id+'x'].status = false;
   console.log('randy', randy, 'logPath', logPath);
   let cmds = [
     env,
@@ -39,6 +40,6 @@ async function spawnCompose(randy, repo, branch, env) {
   let joined = cmds.join(';');
   console.log(joined);
   let results = await P.resolve(exec(joined));
-  db[id].status = true;
+  db[id+'x'].status = true;
   return { results, randy };
 }

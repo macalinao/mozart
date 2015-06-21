@@ -9,7 +9,7 @@ export default async function(req, res) {
   let filepath = '/mozart/'+id+'.log';
   console.log('log id', id, 'filepath', filepath);
   res.json({
-    status: db[id].status,
+    status: db[id+'x'].status,
     file: fs.readFileSync(filepath)
   });
 }
