@@ -5,6 +5,7 @@ import { db } from './ghettodb';
 import provision from './commands/provision';
 import compose from './commands/compose';
 import decompose from './commands/decompose';
+import logs from './commands/logs';
 
 let app = express();
 
