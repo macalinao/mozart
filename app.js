@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 
 import provision from './commands/provision';
 import compose from './commands/compose';
+import decompose from './commands/decompose';
 
 let app = express();
 
