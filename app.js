@@ -5,6 +5,7 @@ import { db } from './ghettodb';
 import provision from './commands/provision';
 import compose from './commands/compose';
 import decompose from './commands/decompose';
+import decompose from './commands/decompose';
 
 let app = express();
 
@@ -21,7 +22,8 @@ app.get('/', (req, res) => {
 
 app.post('/provision', provision);
 app.post('/compose', compose);
-app.post('/decompose', decompose);
+app.post('/compose/', compose);
+app.post('/logs/:id', logs);
 
 let port = process.env.PORT || 3000;
 app.listen(port, () => {

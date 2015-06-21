@@ -23,6 +23,8 @@ async function findEnv(machine) {
 
 async function spawnCompose(repo, branch, env) {
   let randy = 'mozart-' + md5(repo + '/' + branch);
+  let logPath = '/mozart/' + id + '.log';
+  console.log('randy', randy, 'logPath', logPath);
   let cmds = [
     env,
     `mkdir -p /tmp`,
@@ -30,12 +32,12 @@ async function spawnCompose(repo, branch, env) {
     `rm -rf ${randy}`,
     `git clone -b ${branch} ${repo} ${randy}`,
     `cd ${randy}`,
-    `docker-compose build`,
+    `docker-compose build > ` + logPath,
     `(docker-compose stop || true)`
-    `docker-compose up -d`
+    `docker-compose up -d`  + logPath
   ];
   let joined = cmds.join(';');
-  console.log(joined);
+  console.log(joined,);
   let results = await P.resolve(exec(joined));
   return { results, randy };
 }
