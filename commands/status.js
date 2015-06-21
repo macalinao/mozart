@@ -1,7 +1,7 @@
 import { db } from '../ghettodb';
 
 export default async function(req, res) {
-  let name = req.param.name;
+  let name = req.params.name;
   if (!name) {
     return res.json({ message: 'No name RIP' });
   }
