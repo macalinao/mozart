@@ -1,4 +1,5 @@
 import { exec } from 'child-process-promise';
+import P from 'bluebird';
 import md5 from 'MD5';
 
 export default async function(req, res) {
@@ -15,18 +16,23 @@ export default async function(req, res) {
 }
 
 async function findEnv(machine) {
-  let env = await exec(`docker-machine env ${machine}`);
-  return env.split('\n').join(';');
+  console.log('Finding env...');
+  let env = await P.resolve(exec(`docker-machine env ${machine}`));
+  return env.stdout.split('\n').filter((c) => c != '').filter((c) => c.split('')[0] != '#').join(';');
 }
 
 async function spawnCompose(repo, branch, env) {
   let randy = 'mozart-' + md5(repo + '/' + branch);
   let cmds = [
     env,
+    `mkdir -p /tmp`,
+    `cd /tmp`,
     `git clone -b ${branch} ${repo} ${randy}`,
     `cd ${randy}`,
     `docker-compose up -d`
   ];
-  let results = await exec(cmds.join(';'));
+  let joined = cmds.join(';');
+  console.log(joined);
+  let results = await P.resolve(exec(joined));
   return { results, randy };
 }

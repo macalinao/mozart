@@ -20,6 +20,7 @@
   "dependencies": {
     "MD5": "^1.2.2",
     "babel": "^5.6.1",
+    "bluebird": "^2.9.30",
     "body-parser": "^1.13.1",
     "child-process-promise": "^1.1.0",
     "dockermachine": "0.0.5",
