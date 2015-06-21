@@ -1,6 +1,7 @@
 import { exec } from 'child-process-promise';
 import P from 'bluebird';
 import md5 from 'MD5';
+import { db } from '../ghettodb';
 
 export default async function(req, res) {
   let repo = req.body.repo;
@@ -24,6 +25,7 @@ async function findEnv(machine) {
 async function spawnCompose(repo, branch, env) {
   let randy = 'mozart-' + md5(repo + '/' + branch);
   let logPath = '/mozart/' + id + '.log';
+  db[id].status = false;
   console.log('randy', randy, 'logPath', logPath);
   let cmds = [
     env,
@@ -39,5 +41,6 @@ async function spawnCompose(repo, branch, env) {
   let joined = cmds.join(';');
   console.log(joined);
   let results = await P.resolve(exec(joined));
+  db[id].status = true;
   return { results, randy };
 }

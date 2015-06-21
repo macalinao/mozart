@@ -8,5 +8,8 @@ export default async function(req, res) {
   }
   let filepath = '/mozart/'+id+'.log';
   console.log('log id', id, 'filepath', filepath);
-  res.json(fs.readFileSync(filepath));
+  res.json({
+    status: db[id].status,
+    file: fs.readFileSync(filepath)
+  });
 }
