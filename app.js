@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import ghetto from './ghettodb';
+import { db } from './ghettodb';
 import provision from './commands/provision';
 import compose from './commands/compose';
 import decompose from './commands/decompose';
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to Mozart.',
-    statii: ghetto.db
+    statii: db
   });
 });
 
