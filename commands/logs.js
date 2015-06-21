@@ -6,7 +6,7 @@ export default async function(req, res) {
   if (!id) {
     return res.json({ message: 'No id RIP' });
   }
-  let filepath = '/mozart/'id+'.log';
+  let filepath = '/mozart/'+id+'.log';
   console.log('log id', id, 'filepath', filepath);
   res.json(fs.readFileSync(filepath));
 }
