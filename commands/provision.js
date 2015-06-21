@@ -9,8 +9,9 @@ export default async function(req, res) {
   }
   let name = req.body.name || 'mozart-' + Math.floor(Math.random() * 10000).toString();
   res.json({ name });
+  db[name] = false;
   let machine = await spawnMachine(token, name);
-  db[machine.Driver.MachineName] = true;
+  db[name] = true;
 }
 
 async function spawnMachine(doToken, name) {
