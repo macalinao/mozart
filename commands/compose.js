@@ -1,5 +1,5 @@
 import { exec } from 'child-process-promise';
-import md5 from 'md5';
+import md5 from 'MD5';
 
 export default async function(req, res) {
   let repo = req.body.repo;
