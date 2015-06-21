@@ -6,8 +6,8 @@ export default async function(req, res) {
     return res.json({ message: 'No token RIP' });
   }
   let name = req.body.name || 'mozart-' + Math.floor(Math.random() * 10000).toString();
-  let machine = await spawnMachine(token, name);
-  res.json({ machine: machine.Driver.MachineName });
+  res.json({ name });
+  await spawnMachine(token, name);
 }
 
 async function spawnMachine(doToken, name) {
