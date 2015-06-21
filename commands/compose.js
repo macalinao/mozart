@@ -1,7 +1,7 @@
 import { exec } from 'child-process-promise';
 import md5 from 'MD5';
 
-export default function(req, res) {
+export default async function(req, res) {
   let repo = req.body.repo;
   let path = req.body.path;
   let compose = await spawnCompose(repo, branch);
