@@ -3,7 +3,7 @@ import md5 from 'MD5';
 
 export default async function(req, res) {
   let repo = req.body.repo;
-  let path = req.body.path;
+  let branch = req.body.branch;
   let machine = req.body.machine;
   let env = await findEnv(machine);
   let compose = await spawnCompose(repo, branch, env);
