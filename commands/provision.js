@@ -1,5 +1,7 @@
 import machine from 'dockermachine';
 
+import ghetto from '../ghettodb';
+
 export default async function(req, res) {
   let token = req.body.token;
   if (!token) {
@@ -7,7 +9,8 @@ export default async function(req, res) {
   }
   let name = req.body.name || 'mozart-' + Math.floor(Math.random() * 10000).toString();
   res.json({ name });
-  await spawnMachine(token, name);
+  let machine = await spawnMachine(token, name);
+  let ghetto.db[machine.Driver.MachineName] = true;
 }
 
 async function spawnMachine(doToken, name) {
