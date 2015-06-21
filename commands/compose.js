@@ -9,9 +9,11 @@ export default async function(req, res) {
   let machine = req.body.machine;
   let env = await findEnv(machine);
   let randy = 'mozart-' + md5(repo + '/' + branch);
+  console.log('sending res to frontend')
   res.json({
     randy: compose.randy
   });
+  res.end();
   let compose = await spawnCompose(randy, repo, branch, env);
 }
 
