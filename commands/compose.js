@@ -30,6 +30,7 @@ async function spawnCompose(repo, branch, env) {
     `rm -rf ${randy}`,
     `git clone -b ${branch} ${repo} ${randy}`,
     `cd ${randy}`,
+    `docker-compose build`,
     `docker-compose up -d`
   ];
   let joined = cmds.join(';');
