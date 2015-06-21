@@ -9,4 +9,5 @@ RUN curl -L https://github.com/docker/machine/releases/download/v0.3.0/docker-ma
 RUN chmod +x /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-machine
 
-EXPOSE 3000
+ENV PORT 80
+EXPOSE 80
