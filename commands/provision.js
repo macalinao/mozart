@@ -10,7 +10,12 @@ export default async function(req, res) {
   let name = req.body.name || 'mozart-' + Math.floor(Math.random() * 10000).toString();
   res.json({ name });
   db[name] = false;
-  let machine = await spawnMachine(token, name);
+  try {
+    let machine = await spawnMachine(token, name);
+  } catch (e) {
+    console.log('Wrong token.');
+    return;
+  }
   db[name] = true;
 }
 
