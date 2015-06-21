@@ -10,7 +10,8 @@ export default async function(req, res) {
 
 async function spawnDecompose(randy) {
   let cmds = [
-    `cd ${randy}`,
+    `mkdir -p /tmp/${randy}`,
+    `cd /tmp/${randy}`,
     `docker-compose stop`
   ];
   let results = await exec(cmds.join(';'));
