@@ -10,7 +10,7 @@ export default async function(req, res) {
   let name = req.body.name || 'mozart-' + Math.floor(Math.random() * 10000).toString();
   res.json({ name });
   let machine = await spawnMachine(token, name);
-  let ghetto.db[machine.Driver.MachineName] = true;
+  ghetto.db[machine.Driver.MachineName] = true;
 }
 
 async function spawnMachine(doToken, name) {
