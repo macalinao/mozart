@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.post('/provision', provision);
 app.post('/compose', compose);
-app.post('/compose/', compose);
+app.post('/decompose/', decompose);
 app.get('/logs/:id', logs);
 
 let port = process.env.PORT || 3000;
