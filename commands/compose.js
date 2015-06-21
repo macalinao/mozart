@@ -27,7 +27,7 @@ async function spawnCompose(repo, branch, env) {
     env,
     `mkdir -p /tmp`,
     `cd /tmp`,
-    `rm -rf ${randy},
+    `rm -rf ${randy}`,
     `git clone -b ${branch} ${repo} ${randy}`,
     `cd ${randy}`,
     `docker-compose up -d`
