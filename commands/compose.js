@@ -8,12 +8,11 @@ export default async function(req, res) {
   let branch = req.body.branch;
   let machine = req.body.machine;
   let env = await findEnv(machine);
-  let compose = await spawnCompose(repo, branch, env);
+  let randy = 'mozart-' + md5(repo + '/' + branch);
   res.json({
-    err: compose.results.stderr,
-    out: compose.results.stdout,
     randy: compose.randy
   });
+  let compose = await spawnCompose(randy, repo, branch, env);
 }
 
 async function findEnv(machine) {
@@ -22,8 +21,7 @@ async function findEnv(machine) {
   return env.stdout.split('\n').filter((c) => c != '').filter((c) => c.split('')[0] != '#').join(';');
 }
 
-async function spawnCompose(repo, branch, env) {
-  let randy = 'mozart-' + md5(repo + '/' + branch);
+async function spawnCompose(randy, repo, branch, env) {
   let logPath = '/mozart/' + id + '.log';
   db[id].status = false;
   console.log('randy', randy, 'logPath', logPath);
