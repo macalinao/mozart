@@ -4,7 +4,8 @@
   "description": "Docker compose runner microservice",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node app"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/simplyianm/mozart",
   "dependencies": {
+    "babel": "^5.6.1",
     "express": "^4.13.0"
   }
 }
