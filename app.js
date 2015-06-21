@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to Mozart.',
-    statii: db
+    machines: db
   });
 });
 
