@@ -7,6 +7,6 @@ export default async function(req, res) {
   }
   console.log('status name', name);
   res.json({
-    status: db[name].status,
+    status: db.machines[name]
   });
 }
