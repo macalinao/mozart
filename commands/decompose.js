@@ -9,7 +9,6 @@ export default async function(req, res) {
 }
 
 async function spawnDecompose(randy) {
-  let randy = 'mozart-' + md5(repo + '/' + branch);
   let cmds = [
     `cd ${randy}`,
     `docker-compose stop`
