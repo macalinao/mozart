@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 
 app.post('/provision', provision);
 app.post('/compose', compose);
+app.post('/decompose', decompose);
 
 let port = process.env.PORT || 3000;
 app.listen(port, () => {
