@@ -3,9 +3,10 @@ import fs from 'fs';
 
 export default async function(req, res) {
   let id = req.param.id;
-  console.log('log id', id)
   if (!id) {
     return res.json({ message: 'No id RIP' });
   }
-  res.json('/mozart/'+fs.readFileSync(id+'.log'));
+  let filepath = '/mozart/'id+'.log';
+  console.log('log id', id, 'filepath', filepath);
+  res.json(fs.readFileSync(filepath));
 }

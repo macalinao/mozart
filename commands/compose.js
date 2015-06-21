@@ -37,7 +37,7 @@ async function spawnCompose(repo, branch, env) {
     `docker-compose up -d`  + logPath
   ];
   let joined = cmds.join(';');
-  console.log(joined,);
+  console.log(joined);
   let results = await P.resolve(exec(joined));
   return { results, randy };
 }
